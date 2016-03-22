@@ -12,14 +12,14 @@ if !exists('g:expresso_ignore_chars')
 endif
 
 command! -range=2 Expresso call s:Expresso(<line1>, <line2>)
-vnoremap <silent> g= :call <SID>Expresso()<CR>
+vmap <silent> g= :<C-U>call <SID>Expresso(visualmode())<CR>
 
 function! s:Expresso(...)
   try
-    if a:0 > 0
+    if a:0 == 2
       call s:expresso_range(a:1, a:2)
-    else
-      call s:expresso_visual_selection()
+    elseif a:0 == 1
+      call s:expresso_visual_selection(a:1)
     endif
   catch
     echo 'Expresso error:' v:exception
@@ -55,8 +55,8 @@ function! s:strip_ignorable_chars(text)
   return substitute(a:text, g:expresso_ignore_chars, '', 'g')
 endfunction
 
-function! s:expresso_visual_selection()
-  if visualmode() ==# ''
+function! s:expresso_visual_selection(visualmode)
+  if a:visualmode ==# ''
     throw 'Blockwise select not supported.'
   end
   let l:result = s:evaluate_input(s:visual_selection())
