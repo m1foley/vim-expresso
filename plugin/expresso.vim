@@ -14,7 +14,9 @@ endif
 command! -range=2 Expresso call s:Expresso('range', <line1>, <line2>)
 vmap <silent> g= :<C-U>call <SID>Expresso(visualmode())<CR>
 nmap g= <SID>Expresso
+nmap g== <SID>ExpressoLine
 nnoremap <silent> <SID>Expresso :<C-U>set operatorfunc=<SID>Expresso<CR>g@
+nnoremap <silent> <SID>ExpressoLine :<C-U>set operatorfunc=<SID>Expresso<Bar>execute 'normal! ' v:count1 . 'g@_'<CR>
 
 function! s:Expresso(type, ...)
   try
