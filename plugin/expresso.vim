@@ -35,14 +35,14 @@ function! s:Expresso(type, ...)
       throw 'Blockwise select not supported.'
     endif
 
-    let l:result = s:evaluate_input(s:visual_selection())
+    let l:result = s:evaluate_input(s:prev_visual_selection())
     call s:replace_prev_visual_selection(l:result)
   catch
     echo 'Expresso error:' v:exception
   endtry
 endfunction
 
-function! s:visual_selection()
+function! s:prev_visual_selection()
   let l:e_backup = @e
   try
     silent normal! gv"ey
@@ -53,13 +53,15 @@ function! s:visual_selection()
 endfunction
 
 function! s:evaluate_input(text)
-  return string(eval(s:strip_ignorable_chars(a:text)))
+  return string(eval(s:sanitize_input(a:text)))
 endfunction
 
-function! s:strip_ignorable_chars(text)
-  let l:stripped = substitute(a:text, g:expresso_ignore_chars, '', 'g')
-  let l:stripped = substitute(l:stripped, '[\x00]', ' ', 'g') " line breaks
-  return l:stripped
+function! s:sanitize_input(text)
+  " join line breaks
+  let l:sanitized = substitute(a:text, '[\x00]', ' ', 'g')
+  " strip ignorable chars
+  let l:sanitized = substitute(l:sanitized, g:expresso_ignore_chars, '', 'g')
+  return l:sanitized
 endfunction
 
 function! s:replace_prev_visual_selection(text)
