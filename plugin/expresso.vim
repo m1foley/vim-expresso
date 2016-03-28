@@ -18,13 +18,13 @@ nnoremap <silent> <SID>Expresso :<C-U>set operatorfunc=<SID>Expresso<CR>g@
 
 function! s:Expresso(type, ...)
   try
-    if a:type == 'range'
-      call s:expresso_range(a:2, a:3)
-    elseif a:type == 'char'
+    if a:type ==# 'range'
+      call s:expresso_range(a:1, a:2)
+    elseif a:type ==# 'char'
       call s:expresso_normal_char()
-    elseif a:type == 'line'
+    elseif a:type ==# 'line'
       call s:expresso_normal_line()
-    elseif a:type == ''
+    elseif a:type ==# ''
       throw 'Blockwise select not supported.'
     else
       call s:expresso_visual_selection()
@@ -71,7 +71,7 @@ endfunction
 function! s:visual_selection()
   let l:e_backup = @e
   try
-    silent normal! gv"ey
+    silent normal! `<v`>"ey
     return @e
   finally
     let @e = l:e_backup
