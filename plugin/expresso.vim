@@ -8,7 +8,7 @@ endif
 let g:loaded_expresso = 1
 
 if !exists('g:expresso_ignore_chars')
-  let g:expresso_ignore_chars = '[\$,\x00]'
+  let g:expresso_ignore_chars = '[\$,]'
 endif
 
 command! -range=2 Expresso call s:Expresso('range', <line1>, <line2>)
@@ -60,7 +60,9 @@ function! s:evaluate_input(text)
 endfunction
 
 function! s:strip_ignorable_chars(text)
-  return substitute(a:text, g:expresso_ignore_chars, '', 'g')
+  let l:stripped = substitute(a:text, g:expresso_ignore_chars, '', 'g')
+  let l:stripped = substitute(l:stripped, '[\x00]', ' ', 'g') " line breaks
+  return l:stripped
 endfunction
 
 function! s:expresso_visual_selection()
