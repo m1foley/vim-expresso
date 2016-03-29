@@ -19,7 +19,7 @@ Usage
 
 ### Visual mode
 
-- `g=` after selecting text with `v`/`V`. The selected text will be replaced with the result.
+- `g=` after selecting text replaces it with the result.
 
 ### Normal mode
 
