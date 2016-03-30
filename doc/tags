@@ -1,0 +1,8 @@
+:Expresso	expresso.txt	/*:Expresso*
+Expresso	expresso.txt	/*Expresso*
+Expresso-about	expresso.txt	/*Expresso-about*
+Expresso-commands	expresso.txt	/*Expresso-commands*
+expresso.txt	expresso.txt	/*expresso.txt*
+g=	expresso.txt	/*g=*
+g==	expresso.txt	/*g==*
+v_g=	expresso.txt	/*v_g=*

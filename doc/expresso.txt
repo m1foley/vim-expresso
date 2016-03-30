@@ -1,0 +1,33 @@
+*expresso.txt*  Evaluate text as a math expression
+
+INTRODUCTION                                    *Expresso*
+
+Evaluate text as a math |expression| and replace it with the result.
+Usage is similar to |@=|, the expression register.
+
+COMMANDS                                        *Expresso-commands*
+
+                                                *g=*
+g={motion}              Evaluate and replace the text covered by {motion} as a
+                        math |expression|.
+
+                                                *g==*
+g==                     Evaluate and replace the current line as a math
+                        |expression|.
+
+                                                *v_g=*
+{Visual}g=              Evaluate and replace the selected text as a math
+                        |expression|.
+
+                                                *:Expresso*
+:[range]Expresso        Evaluate and replace [range] lines as a math
+                        |expression|.
+
+ABOUT                                           *Expresso-about*
+
+Author: Mike Foley
+
+Grab the latest version or report an issue on GitHub:
+http://github.com/m1foley/vim-expresso
+
+vim:tw=78:et:ft=help:norl:
