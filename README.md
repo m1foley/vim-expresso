@@ -30,6 +30,11 @@ Usage
 
 - With a range like `:1,7Expresso`
 
+Common Issues
+-------------
+
+Expresso uses Vim expressions, so it has the same limitations of the "expression register" `@=`. If none of the numbers have a decimal, it evaluates to a whole number: `3/2` = `1`. To force a `Float` conversion, add a decimal to one of the numbers: `3/2.0` = `1.5`
+
 License
 -------
 
