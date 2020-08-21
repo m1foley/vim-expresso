@@ -61,6 +61,8 @@ function! s:sanitize_input(text)
   let l:sanitized = substitute(a:text, '[\x00]', ' ', 'g')
   " strip ignorable chars
   let l:sanitized = substitute(l:sanitized, g:expresso_ignore_chars, '', 'g')
+  " strip end of line whitespace
+  let l:sanitized = substitute(l:sanitized, '\s\+$', '', '')
   return l:sanitized
 endfunction
 
