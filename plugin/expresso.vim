@@ -8,7 +8,7 @@ endif
 let g:loaded_expresso = 1
 
 if !exists('g:expresso_ignore_chars')
-  let g:expresso_ignore_chars = '[\$,]'
+  let g:expresso_ignore_chars = '[\$€,]'
 endif
 
 command! -range=2 Expresso call s:Expresso('range', <line1>, <line2>)
